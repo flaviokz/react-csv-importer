@@ -9,8 +9,8 @@ export interface CustomizablePapaParseConfig {
   comments?: Papa.ParseConfig['comments'];
   skipEmptyLines?: Papa.ParseConfig['skipEmptyLines'];
   delimitersToGuess?: Papa.ParseConfig['delimitersToGuess'];
-  chunkSize?: Papa.ParseConfig['chunkSize'];
-  encoding?: Papa.ParseConfig['encoding'];
+  chunkSize?: 1000;
+  encoding?: 'utf-8';
 }
 
 export interface PreviewReport {
@@ -186,7 +186,7 @@ function nodeStreamWrapper(stream: ReadableStream, encoding: string): Readable {
   };
 
   // pass ourselves off as a real Node stream
-  return (self as unknown) as Readable;
+  return self as unknown as Readable;
 }
 
 export function parsePreview(

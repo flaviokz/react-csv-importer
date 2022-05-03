@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { ImporterLocale } from '../locale';
 import { CustomizablePapaParseConfig, ParseCallback, BaseRow } from '../parser';
 
@@ -33,6 +33,7 @@ export interface ImporterFieldProps {
   name: string;
   label: string;
   optional?: boolean;
+  Tooltip?: Component;
 }
 
 export interface ImporterProps<Row extends BaseRow>

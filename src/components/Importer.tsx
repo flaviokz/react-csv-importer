@@ -29,7 +29,8 @@ let fieldIdCount = 0;
 export const ImporterField: React.FC<ImporterFieldProps> = ({
   name,
   label,
-  optional
+  optional,
+  Tooltip
 }) => {
   // @todo this is not SSR-compatible
   const fieldId = useMemo(() => (fieldIdCount += 1), []);
@@ -43,7 +44,13 @@ export const ImporterField: React.FC<ImporterFieldProps> = ({
     }
 
     fieldSetter((prev) => {
-      const newField = { id: fieldId, name, label, isOptional: !!optional };
+      const newField = {
+        id: fieldId,
+        name,
+        label,
+        isOptional: !!optional,
+        Tooltip
+      };
 
       const copy = [...prev];
       const existingIndex = copy.findIndex((item) => item.name === name);
@@ -58,7 +65,7 @@ export const ImporterField: React.FC<ImporterFieldProps> = ({
 
       return copy;
     });
-  }, [fieldId, fieldSetter, name, label, optional]);
+  }, [fieldId, fieldSetter, name, label, optional, Tooltip]);
 
   // on component unmount, remove this field from list by ID
   useEffect(() => {

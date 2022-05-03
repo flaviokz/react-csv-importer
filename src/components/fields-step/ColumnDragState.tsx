@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef, Component } from 'react';
 import { useDrag } from 'react-use-gesture';
 
 import { FieldAssignmentMap } from '../../parser';
@@ -8,6 +8,7 @@ export interface Field {
   name: string;
   label: string;
   isOptional: boolean;
+  Tooltip?: Component;
 }
 
 export interface DragState {
@@ -43,9 +44,8 @@ export function useColumnDragState(
 
   const [dragState, setDragState] = useState<DragState | null>(null);
 
-  const [fieldAssignments, setFieldAssignments] = useState<FieldAssignmentMap>(
-    initialAssignments
-  );
+  const [fieldAssignments, setFieldAssignments] =
+    useState<FieldAssignmentMap>(initialAssignments);
 
   // make sure there are no extra fields
   useEffect(() => {

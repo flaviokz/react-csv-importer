@@ -141,6 +141,7 @@ const TargetBox: React.FC<{
       <div className="CSVImporter_ColumnDragTargetArea__boxLabel" aria-hidden>
         {field.label}
         {field.isOptional ? null : <b>*</b>}
+        {field.Tooltip}
       </div>
 
       <div className="CSVImporter_ColumnDragTargetArea__boxValue">
